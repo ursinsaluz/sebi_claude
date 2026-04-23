@@ -1,0 +1,17 @@
+---
+export interface Props {
+  size?: number;
+  color?: string;
+}
+
+const { size = 20, color = 'currentColor' } = Astro.props;
+---
+<span style={`display: inline-flex; align-items: center; gap: 10px; color: ${color};`}>
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+    <path d="M4 20 L12 4 L20 20 Z" />
+    <path d="M8 14 L16 14" />
+  </svg>
+  <span style={`font-family: var(--serif); font-size: ${size * 0.9}px; letter-spacing: -0.02em; font-weight: 500;`}>
+    titz<span style="color: var(--ember); font-style: italic;">.</span>cooking
+  </span>
+</span>
