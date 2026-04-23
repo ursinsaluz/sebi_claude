@@ -3,6 +3,10 @@ import Layout from '../layouts/Layout.astro';
 import TzNav from '../components/TzNav.astro';
 import TzFooter from '../components/TzFooter.astro';
 import TzArrow from '../components/TzArrow.astro';
+import client from '../../tina/__generated__/client';
+
+const response = await client.queries.page({ relativePath: 'home.json' });
+const data = response.data.page;
 ---
 
 <Layout title="titz.cooking — Redesign">
@@ -22,21 +26,21 @@ import TzArrow from '../components/TzArrow.astro';
         <div style="display: grid; grid-template-columns: 1fr auto; align-items: flex-end; gap: 48px;">
           <div>
             <div class="tz-eyebrow" style="color: rgba(244,239,231,0.7); margin-bottom: 24px;">
-              <span style="color: var(--ember);">●</span>&nbsp;&nbsp;Küchenchef · Restaurant Pinot · Fläsch
+              <span style="color: var(--ember);">●</span>&nbsp;&nbsp;{data.hero?.pretitle}
             </div>
             <h1 class="tz-display" style="font-size: 168px; margin: 0; line-height: 0.88; font-weight: 300;">
-              Authentisch.<br/>
-              <span class="it" style="font-style: italic; font-weight: 400;">Regional.</span><br/>
-              <span style="color: var(--ember);">Exzellent.</span>
+              {data.hero?.title1}<br/>
+              <span class="it" style="font-style: italic; font-weight: 400;">{data.hero?.titleItalic}</span><br/>
+              <span style="color: var(--ember);">{data.hero?.titleEnd}</span>
             </h1>
           </div>
           <div style="text-align: right; padding-bottom: 20px;">
             <p style="font-family: var(--serif); font-size: 20px; font-style: italic; line-height: 1.4; max-width: 340px; font-weight: 300; margin: 0; opacity: 0.9;">
-              Kulinarik zwischen Michelin-Stern und Bündner Bodenständigkeit.
+              {data.hero?.subtitle}
             </p>
             <div style="display: flex; gap: 12px; margin-top: 28px; justify-content: flex-end;">
-              <a class="tz-btn ember" href="#philo">Meine Philosophie <TzArrow /></a>
-              <a class="tz-btn ghost" href="#kontakt" style="border-color: #f4efe7; color: #f4efe7;">Kontakt aufnehmen</a>
+              <a class="tz-btn ember" href="#philo">{data.hero?.ctaPrimary} <TzArrow /></a>
+              <a class="tz-btn ghost" href="#kontakt" style="border-color: #f4efe7; color: #f4efe7;">{data.hero?.ctaSecondary}</a>
             </div>
           </div>
         </div>
@@ -102,33 +106,17 @@ import TzArrow from '../components/TzArrow.astro';
       </div>
 
       <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; border-top: 1px solid var(--rule); padding-top: 48px;">
-        <div>
-          <div style="font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em; color: var(--ember); margin-bottom: 24px;">§ 01</div>
-          <div style="height: 300px; background: var(--paper-2); margin-bottom: 28px; overflow: hidden;">
-            <img src="/img/pinot-07.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover; filter: saturate(0.95);" />
+        {data.philosophy?.map((item, index) => (
+          <div>
+            <div style="font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em; color: var(--ember); margin-bottom: 24px;">§ 0{index + 1}</div>
+            <div style="height: 300px; background: var(--paper-2); margin-bottom: 28px; overflow: hidden;">
+              <img src={item.image} alt="" style="width: 100%; height: 100%; object-fit: cover; filter: saturate(0.95);" />
+            </div>
+            <h3 class="tz-display" style="font-size: 40px; margin: 0 0 12px; font-weight: 400;">{item.title}</h3>
+            <p style="font-family: var(--serif); font-size: 17px; font-style: italic; color: var(--ink-2); margin: 0 0 16px; line-height: 1.4;">{item.pretitle}</p>
+            <p style="font-size: 14px; line-height: 1.65; color: var(--ink-3); margin: 0;">{item.description}</p>
           </div>
-          <h3 class="tz-display" style="font-size: 40px; margin: 0 0 12px; font-weight: 400;">Authentisch</h3>
-          <p style="font-family: var(--serif); font-size: 17px; font-style: italic; color: var(--ink-2); margin: 0 0 16px; line-height: 1.4;">Ehrlich und ohne Schnickschnack.</p>
-          <p style="font-size: 14px; line-height: 1.65; color: var(--ink-3); margin: 0;">Ich koche so, wie ich bin: bodenständig und direkt. Schnörkellose Gerichte, ohne Chichi, aber mit einem echten Wow-Effekt im Mund.</p>
-        </div>
-        <div>
-          <div style="font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em; color: var(--ember); margin-bottom: 24px;">§ 02</div>
-          <div style="height: 300px; background: var(--paper-2); margin-bottom: 28px; overflow: hidden;">
-            <img src="/img/terroir-1.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover; filter: saturate(0.95);" />
-          </div>
-          <h3 class="tz-display" style="font-size: 40px; margin: 0 0 12px; font-weight: 400;">Regional</h3>
-          <p style="font-family: var(--serif); font-size: 17px; font-style: italic; color: var(--ink-2); margin: 0 0 16px; line-height: 1.4;">Aus der Heimat auf den Teller.</p>
-          <p style="font-size: 14px; line-height: 1.65; color: var(--ink-3); margin: 0;">Die besten Lebensmittel finde ich direkt hier. Enge Zusammenarbeit mit lokalen Produzenten — gekocht wird frisch und im Rhythmus der vier Jahreszeiten.</p>
-        </div>
-        <div>
-          <div style="font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em; color: var(--ember); margin-bottom: 24px;">§ 03</div>
-          <div style="height: 300px; background: var(--paper-2); margin-bottom: 28px; overflow: hidden;">
-            <img src="/img/dish-2.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover; filter: saturate(0.95);" />
-          </div>
-          <h3 class="tz-display" style="font-size: 40px; margin: 0 0 12px; font-weight: 400;">Exzellent</h3>
-          <p style="font-family: var(--serif); font-size: 17px; font-style: italic; color: var(--ink-2); margin: 0 0 16px; line-height: 1.4;">Die Natur als Massstab.</p>
-          <p style="font-size: 14px; line-height: 1.65; color: var(--ink-3); margin: 0;">Der Goldene Schnitt. Die Fibonacci-Reihe. Natürliche Ordnung inspiriert mich beim Anrichten — bis daraus mit einem guten Glas Wein ein Erlebnis wird.</p>
-        </div>
+        ))}
       </div>
     </section>
 
@@ -176,54 +164,20 @@ import TzArrow from '../components/TzArrow.astro';
       </div>
 
       <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px;">
-        <article style="border-top: 1px solid var(--ink); padding-top: 16px;">
-          <div style="display: flex; justify-content: space-between; font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 16px;">
-            <span style="color: var(--ember);">● signature</span>
-            <span>№ 01</span>
-          </div>
-          <div style="aspect-ratio: 4/5; background: var(--paper-2); margin-bottom: 20px; overflow: hidden;">
-            <img src="/img/dish-1.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover;" />
-          </div>
-          <h3 class="tz-display" style="font-size: 26px; margin: 0 0 10px; font-weight: 400; line-height: 1.1;">Milcheis mit Spekulatius</h3>
-          <p style="font-size: 13px; line-height: 1.55; color: var(--ink-3); margin: 0 0 14px;">Winterliche Aromen treffen auf Finesse. Geflämmte Meringue, Apfel, Spekulatius.</p>
-          <div style="font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; color: var(--ink-4); text-transform: uppercase;">Dessert · Winter</div>
-        </article>
-        <article style="border-top: 1px solid var(--ink); padding-top: 16px;">
-          <div style="display: flex; justify-content: space-between; font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 16px;">
-            <span style="color: var(--ember);">● signature</span>
-            <span>№ 02</span>
-          </div>
-          <div style="aspect-ratio: 4/5; background: var(--paper-2); margin-bottom: 20px; overflow: hidden;">
-            <img src="/img/moor-1.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover;" />
-          </div>
-          <h3 class="tz-display" style="font-size: 26px; margin: 0 0 10px; font-weight: 400; line-height: 1.1;">Heusuppe</h3>
-          <p style="font-size: 13px; line-height: 1.55; color: var(--ink-3); margin: 0 0 14px;">Hommage an Stefan Wiesner. Getrocknetes Heu in einer samtigen Suppe. Natur pur.</p>
-          <div style="font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; color: var(--ink-4); text-transform: uppercase;">Suppe · Ganzjährig</div>
-        </article>
-        <article style="border-top: 1px solid var(--ink); padding-top: 16px;">
-          <div style="display: flex; justify-content: space-between; font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 16px;">
-            <span style="color: var(--ink-3);">● starter</span>
-            <span>№ 03</span>
-          </div>
-          <div style="aspect-ratio: 4/5; background: var(--paper-2); margin-bottom: 20px; overflow: hidden;">
-            <img src="/img/dish-3.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover;" />
-          </div>
-          <h3 class="tz-display" style="font-size: 26px; margin: 0 0 10px; font-weight: 400; line-height: 1.1;">Angus Beef Tartare</h3>
-          <p style="font-size: 13px; line-height: 1.55; color: var(--ink-3); margin: 0 0 14px;">Hommage an die Erde. Das Rohe des Rindes trifft auf die Textur des Selleries.</p>
-          <div style="font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; color: var(--ink-4); text-transform: uppercase;">Vorspeise</div>
-        </article>
-        <article style="border-top: 1px solid var(--ink); padding-top: 16px;">
-          <div style="display: flex; justify-content: space-between; font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 16px;">
-            <span style="color: var(--ember);">● signature</span>
-            <span>№ 04</span>
-          </div>
-          <div style="aspect-ratio: 4/5; background: var(--paper-2); margin-bottom: 20px; overflow: hidden;">
-            <img src="/img/dish-4.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover;" />
-          </div>
-          <h3 class="tz-display" style="font-size: 26px; margin: 0 0 10px; font-weight: 400; line-height: 1.1;">Kalb mit schwarzem Trüffel</h3>
-          <p style="font-size: 13px; line-height: 1.55; color: var(--ink-3); margin: 0 0 14px;">Heimat trifft Luxus. Zartes Kalb, Tiefe des Trüffels, Serviettenknödel.</p>
-          <div style="font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; color: var(--ink-4); text-transform: uppercase;">Hauptgang · Winter</div>
-        </article>
+        {data.signatureDishes?.map((dish, index) => (
+          <article style="border-top: 1px solid var(--ink); padding-top: 16px;">
+            <div style="display: flex; justify-content: space-between; font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 16px;">
+              <span style={dish.tag?.toLowerCase() === 'signature' ? "color: var(--ember);" : "color: var(--ink-3);"}>● {dish.tag}</span>
+              <span>№ 0{index + 1}</span>
+            </div>
+            <div style="aspect-ratio: 4/5; background: var(--paper-2); margin-bottom: 20px; overflow: hidden;">
+              <img src={dish.image} alt="" style="width: 100%; height: 100%; object-fit: cover;" />
+            </div>
+            <h3 class="tz-display" style="font-size: 26px; margin: 0 0 10px; font-weight: 400; line-height: 1.1;">{dish.title}</h3>
+            <p style="font-size: 13px; line-height: 1.55; color: var(--ink-3); margin: 0 0 14px;">{dish.description}</p>
+            <div style="font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; color: var(--ink-4); text-transform: uppercase;">{dish.bottomTag}</div>
+          </article>
+        ))}
       </div>
     </section>
 
@@ -240,30 +194,20 @@ import TzArrow from '../components/TzArrow.astro';
           </p>
         </div>
         <div>
-          <article style="display: grid; grid-template-columns: 140px 1fr 40px; gap: 32px; padding: 28px 0; border-top: 1px solid var(--rule); align-items: start;">
-            <div>
-              <div style="font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; color: var(--ink-2);">02.01.2026</div>
-              <div style="font-family: var(--mono); font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ember-deep); margin-top: 6px;">Auszeichnung</div>
-            </div>
-            <div>
-              <div style="font-family: var(--serif); font-style: italic; font-size: 14px; color: var(--ink-3); margin-bottom: 6px;">Falstaff</div>
-              <h3 class="tz-display" style="font-size: 32px; margin: 0 0 10px; font-weight: 400; line-height: 1.1;">Restaurants & Beizen Guide 2026</h3>
-              <p style="font-size: 14px; line-height: 1.55; color: var(--ink-3); margin: 0; max-width: 560px;">Das Restaurant Pinot wurde von Falstaff Schweiz ausgezeichnet — für regionale Küche und die kreative Handschrift von Sebastian.</p>
-            </div>
-            <div style="align-self: center; font-size: 22px; color: var(--ink);">→</div>
-          </article>
-          <article style="display: grid; grid-template-columns: 140px 1fr 40px; gap: 32px; padding: 28px 0; border-top: 1px solid var(--rule); align-items: start;">
-            <div>
-              <div style="font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; color: var(--ink-2);">21.10.2025</div>
-              <div style="font-family: var(--mono); font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ember-deep); margin-top: 6px;">Interview</div>
-            </div>
-            <div>
-              <div style="font-family: var(--serif); font-style: italic; font-size: 14px; color: var(--ink-3); margin-bottom: 6px;">Podcast · Was kochst du?!</div>
-              <h3 class="tz-display" style="font-size: 32px; margin: 0 0 10px; font-weight: 400; line-height: 1.1;">Im Gespräch mit Andy Piesche & Felix Jarzina</h3>
-              <p style="font-size: 14px; line-height: 1.55; color: var(--ink-3); margin: 0; max-width: 560px;">Drei Chefs über Küche, Handwerk und den Mut zum Weglassen.</p>
-            </div>
-            <div style="align-self: center; font-size: 22px; color: var(--ink);">→</div>
-          </article>
+          {data.news?.map((item) => (
+            <article style="display: grid; grid-template-columns: 140px 1fr 40px; gap: 32px; padding: 28px 0; border-top: 1px solid var(--rule); align-items: start;">
+              <div>
+                <div style="font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; color: var(--ink-2);">{item.date}</div>
+                <div style="font-family: var(--mono); font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ember-deep); margin-top: 6px;">{item.tag}</div>
+              </div>
+              <div>
+                <div style="font-family: var(--serif); font-style: italic; font-size: 14px; color: var(--ink-3); margin-bottom: 6px;">{item.publisher}</div>
+                <h3 class="tz-display" style="font-size: 32px; margin: 0 0 10px; font-weight: 400; line-height: 1.1;">{item.title}</h3>
+                <p style="font-size: 14px; line-height: 1.55; color: var(--ink-3); margin: 0; max-width: 560px;">{item.description}</p>
+              </div>
+              <div style="align-self: center; font-size: 22px; color: var(--ink);">→</div>
+            </article>
+          ))}
         </div>
       </div>
     </section>
@@ -276,60 +220,30 @@ import TzArrow from '../components/TzArrow.astro';
       </h2>
 
       <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;">
-        <div style="padding: 32px; border: 1px solid var(--rule); background: var(--paper); color: var(--ink); display: flex; flex-direction: column; justify-content: space-between; min-height: 540px;">
-          <div>
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
-              <div style="font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-3);">№ 01</div>
+        {data.offers?.map((offer, index) => (
+          <div style={`padding: 32px; border: 1px solid var(--rule); background: ${offer.featured ? 'var(--ink)' : 'var(--paper)'}; color: ${offer.featured ? 'var(--paper)' : 'var(--ink)'}; display: flex; flex-direction: column; justify-content: space-between; min-height: 540px;`}>
+            <div>
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+                <div style={`font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: ${offer.featured ? 'var(--ember)' : 'var(--ink-3)'};`}>№ 0{index + 1}</div>
+                {offer.featured && <div style="font-family: var(--mono); font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ember);">● Flagship</div>}
+              </div>
+              <h3 class="tz-display" style="font-size: 48px; margin: 0 0 16px; font-weight: 400; line-height: 1;">{offer.title}</h3>
+              <p style="font-family: var(--serif); font-size: 20px; font-style: italic; margin: 0 0 20px; line-height: 1.3; opacity: 0.9;">{offer.subtitle}</p>
+              <p style="font-size: 14px; line-height: 1.6; opacity: 0.7; margin: 0;">{offer.description}</p>
             </div>
-            <h3 class="tz-display" style="font-size: 48px; margin: 0 0 16px; font-weight: 400; line-height: 1;">Beratung</h3>
-            <p style="font-family: var(--serif); font-size: 20px; font-style: italic; margin: 0 0 20px; line-height: 1.3; opacity: 0.9;">Kulinarische Konzepte für Health- & Lifestyle-Resorts.</p>
-            <p style="font-size: 14px; line-height: 1.6; opacity: 0.7; margin: 0;">Zwanzig Jahre Gourmetgastronomie, übersetzt in tragfähige Konzepte — vom Menü-Engineering bis zur Teamführung.</p>
-          </div>
-          <div>
-            <div style="height: 180px; background: var(--paper-2); margin-top: 28px; margin-bottom: 24px; overflow: hidden;">
-              <img src="/img/pinot-18.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover;" />
+            <div>
+              <div style="height: 180px; background: var(--paper-2); margin-top: 28px; margin-bottom: 24px; overflow: hidden;">
+                <img src={offer.image} alt="" style="width: 100%; height: 100%; object-fit: cover;" />
+              </div>
+              <a class={`tz-btn ${offer.featured ? 'ember' : 'ghost'}`} href="#kontakt" style={!offer.featured ? "border-color: var(--ink);" : ""}>{offer.cta} <TzArrow /></a>
             </div>
-            <a class="tz-btn ghost" href="#kontakt" style="border-color: var(--ink);">Beratung anfragen <TzArrow /></a>
           </div>
-        </div>
-        <div style="padding: 32px; border: 1px solid var(--rule); background: var(--paper); color: var(--ink); display: flex; flex-direction: column; justify-content: space-between; min-height: 540px;">
-          <div>
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
-              <div style="font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-3);">№ 02</div>
-            </div>
-            <h3 class="tz-display" style="font-size: 48px; margin: 0 0 16px; font-weight: 400; line-height: 1;">Catering</h3>
-            <p style="font-family: var(--serif); font-size: 20px; font-style: italic; margin: 0 0 20px; line-height: 1.3; opacity: 0.9;">Nachhaltige Sternenküche für Ihren Event.</p>
-            <p style="font-size: 14px; line-height: 1.6; opacity: 0.7; margin: 0;">Wir bringen exzellenten Genuss zu Ihnen — vom privaten Dinner bis zum Firmen-Anlass, stets mit regionalem Fokus.</p>
-          </div>
-          <div>
-            <div style="height: 180px; background: var(--paper-2); margin-top: 28px; margin-bottom: 24px; overflow: hidden;">
-              <img src="/img/pinot-17.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover;" />
-            </div>
-            <a class="tz-btn ghost" href="#kontakt" style="border-color: var(--ink);">Weitere Informationen <TzArrow /></a>
-          </div>
-        </div>
-        <div style="padding: 32px; border: 1px solid var(--rule); background: var(--ink); color: var(--paper); display: flex; flex-direction: column; justify-content: space-between; min-height: 540px;">
-          <div>
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
-              <div style="font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ember);">№ 03</div>
-              <div style="font-family: var(--mono); font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ember);">● Flagship</div>
-            </div>
-            <h3 class="tz-display" style="font-size: 48px; margin: 0 0 16px; font-weight: 400; line-height: 1;">Restaurant Pinot</h3>
-            <p style="font-family: var(--serif); font-size: 20px; font-style: italic; margin: 0 0 20px; line-height: 1.3; opacity: 0.9;">Rückkehr zur Intimität.</p>
-            <p style="font-size: 14px; line-height: 1.6; opacity: 0.7; margin: 0;">Schnörkellose Gerichte mit Wow-Effekt in der Bündner Herrschaft. Täglich 09:00 – 18:00, Do abends.</p>
-          </div>
-          <div>
-            <div style="height: 180px; background: var(--paper-2); margin-top: 28px; margin-bottom: 24px; overflow: hidden;">
-              <img src="/img/terrasse.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover;" />
-            </div>
-            <a class="tz-btn ember" href="#kontakt">Kontakt aufnehmen <TzArrow /></a>
-          </div>
-        </div>
+        ))}
       </div>
     </section>
 
     <!-- ─── KONTAKT / PINOT ─────────────────────── -->
-    <section id="kontakt" style="background: var(--paper-3); padding: 120px 56px; position: relative; overflow: hidden;">
+    <section id="pinot" style="background: var(--paper-3); padding: 120px 56px; position: relative; overflow: hidden;">
       <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 80px;">
         <div>
           <div class="tz-eyebrow" style="margin-bottom: 16px;">§ 06 — Besuchen Sie uns</div>
@@ -340,43 +254,43 @@ import TzArrow from '../components/TzArrow.astro';
             Erleben Sie meine neue Küche — in der Bündner Herrschaft, zwischen Reben und Alpen.
           </p>
 
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-bottom: 48px;">
+          <div id="kontakt" style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-bottom: 48px; scroll-margin-top: 60px;">
             <div>
               <div class="tz-eyebrow" style="margin-bottom: 10px;">Adresse</div>
-              <div style="font-family: var(--serif); font-size: 18px; line-height: 1.5;">
-                Restaurant Pinot<br/>Steigstrasse 14<br/>7306 Fläsch
+              <div style="font-family: var(--serif); font-size: 18px; line-height: 1.5; white-space: pre-wrap;">
+                {data.restaurant?.address}
               </div>
             </div>
             <div>
               <div class="tz-eyebrow" style="margin-bottom: 10px;">Öffnungszeiten</div>
-              <div style="font-family: var(--serif); font-size: 18px; line-height: 1.5;">
-                Täglich 09:00 – 18:00<br/>Do Abend ab 18:00
+              <div style="font-family: var(--serif); font-size: 18px; line-height: 1.5; white-space: pre-wrap;">
+                {data.restaurant?.hours}
               </div>
             </div>
             <div>
               <div class="tz-eyebrow" style="margin-bottom: 10px;">Telefon</div>
-              <div style="font-family: var(--serif); font-size: 18px;">+41 79 123 45 67</div>
+              <div style="font-family: var(--serif); font-size: 18px;">{data.restaurant?.phone}</div>
             </div>
             <div>
               <div class="tz-eyebrow" style="margin-bottom: 10px;">E-Mail</div>
-              <div style="font-family: var(--serif); font-size: 18px;">info@titz.cooking</div>
+              <div style="font-family: var(--serif); font-size: 18px;">{data.restaurant?.email}</div>
             </div>
           </div>
 
           <div style="display: flex; gap: 12px;">
-            <a class="tz-btn primary" href="#kontakt">Kontakt aufnehmen <TzArrow /></a>
+            <a class="tz-btn primary" href="mailto:info@titz.cooking">Kontakt aufnehmen <TzArrow /></a>
             <a class="tz-btn ghost" href="#">Anfahrt ansehen</a>
           </div>
         </div>
 
         <div style="display: grid; grid-template-rows: 1fr 1fr; gap: 16px;">
           <div style="overflow: hidden; position: relative;">
-            <img src="/img/terrasse.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover;" />
+            <img src={data.restaurant?.gallery?.[0]} alt="" style="width: 100%; height: 100%; object-fit: cover;" />
             <div style="position: absolute; bottom: 16px; left: 16px; font-family: var(--mono); font-size: 9px; letter-spacing: 0.2em; color: #f4efe7;">SOMMERTERRASSE</div>
           </div>
           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
-            <div style="overflow: hidden;"><img src="/img/pinot-06.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover;" /></div>
-            <div style="overflow: hidden;"><img src="/img/pinot-19.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover;" /></div>
+            <div style="overflow: hidden;"><img src={data.restaurant?.gallery?.[1]} alt="" style="width: 100%; height: 100%; object-fit: cover;" /></div>
+            <div style="overflow: hidden;"><img src={data.restaurant?.gallery?.[2]} alt="" style="width: 100%; height: 100%; object-fit: cover;" /></div>
           </div>
         </div>
       </div>

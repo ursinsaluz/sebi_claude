@@ -1,0 +1,116 @@
+{
+  "hero": {
+    "pretitle": "●  Küchenchef · Restaurant Pinot · Fläsch",
+    "title1": "Authentisch.",
+    "titleItalic": "Regional.",
+    "titleEnd": "Exzellent.",
+    "subtitle": "Kulinarik zwischen Michelin-Stern und Bündner Bodenständigkeit.",
+    "ctaPrimary": "Meine Philosophie",
+    "ctaSecondary": "Kontakt aufnehmen"
+  },
+  "philosophy": [
+    {
+      "title": "Authentisch",
+      "pretitle": "Ehrlich und ohne Schnickschnack.",
+      "description": "Ich koche so, wie ich bin: bodenständig und direkt. Schnörkellose Gerichte, ohne Chichi, aber mit einem echten Wow-Effekt im Mund.",
+      "image": "/img/pinot-07.jpg"
+    },
+    {
+      "title": "Regional",
+      "pretitle": "Aus der Heimat auf den Teller.",
+      "description": "Die besten Lebensmittel finde ich direkt hier. Enge Zusammenarbeit mit lokalen Produzenten — gekocht wird frisch und im Rhythmus der vier Jahreszeiten.",
+      "image": "/img/terroir-1.jpg"
+    },
+    {
+      "title": "Exzellent",
+      "pretitle": "Die Natur als Massstab.",
+      "description": "Der Goldene Schnitt. Die Fibonacci-Reihe. Natürliche Ordnung inspiriert mich beim Anrichten — bis daraus mit einem guten Glas Wein ein Erlebnis wird.",
+      "image": "/img/dish-2.jpg"
+    }
+  ],
+  "signatureDishes": [
+    {
+      "title": "Milcheis mit Spekulatius",
+      "description": "Winterliche Aromen treffen auf Finesse. Geflämmte Meringue, Apfel, Spekulatius.",
+      "image": "/img/dish-1.jpg",
+      "tag": "signature",
+      "bottomTag": "Dessert · Winter"
+    },
+    {
+      "title": "Heusuppe",
+      "description": "Hommage an Stefan Wiesner. Getrocknetes Heu in einer samtigen Suppe. Natur pur.",
+      "image": "/img/moor-1.jpg",
+      "tag": "signature",
+      "bottomTag": "Suppe · Ganzjährig"
+    },
+    {
+      "title": "Angus Beef Tartare",
+      "description": "Hommage an die Erde. Das Rohe des Rindes trifft auf die Textur des Selleries.",
+      "image": "/img/dish-3.jpg",
+      "tag": "starter",
+      "bottomTag": "Vorspeise"
+    },
+    {
+      "title": "Kalb mit schwarzem Trüffel",
+      "description": "Heimat trifft Luxus. Zartes Kalb, Tiefe des Trüffels, Serviettenknödel.",
+      "image": "/img/dish-4.jpg",
+      "tag": "signature",
+      "bottomTag": "Hauptgang · Winter"
+    }
+  ],
+  "news": [
+    {
+      "title": "Restaurants & Beizen Guide 2026",
+      "publisher": "Falstaff",
+      "date": "02.01.2026",
+      "tag": "Auszeichnung",
+      "description": "Das Restaurant Pinot wurde von Falstaff Schweiz ausgezeichnet — für regionale Küche und die kreative Handschrift von Sebastian."
+    },
+    {
+      "title": "Im Gespräch mit Andy Piesche & Felix Jarzina",
+      "publisher": "Podcast · Was kochst du?!",
+      "date": "21.10.2025",
+      "tag": "Interview",
+      "description": "Drei Chefs über Küche, Handwerk und den Mut zum Weglassen."
+    }
+  ],
+  "offers": [
+    {
+      "title": "Beratung",
+      "subtitle": "Kulinarische Konzepte für Health- & Lifestyle-Resorts.",
+      "description": "Zwanzig Jahre Gourmetgastronomie, übersetzt in tragfähige Konzepte — vom Menü-Engineering bis zur Teamführung.",
+      "image": "/img/pinot-18.jpg",
+      "cta": "Beratung anfragen",
+      "featured": false
+    },
+    {
+      "title": "Catering",
+      "subtitle": "Nachhaltige Sternenküche für Ihren Event.",
+      "description": "Wir bringen exzellenten Genuss zu Ihnen — vom privaten Dinner bis zum Firmen-Anlass, stets mit regionalem Fokus.",
+      "image": "/img/pinot-17.jpg",
+      "cta": "Weitere Informationen",
+      "featured": false
+    },
+    {
+      "title": "Restaurant Pinot",
+      "subtitle": "Rückkehr zur Intimität.",
+      "description": "Schnörkellose Gerichte mit Wow-Effekt in der Bündner Herrschaft. Täglich 09:00 – 18:00, Do abends.",
+      "image": "/img/terrasse.jpg",
+      "cta": "Kontakt aufnehmen",
+      "featured": true
+    }
+  ],
+  "restaurant": {
+    "title": "Restaurant",
+    "subtitle": "Erleben Sie meine neue Küche — in der Bündner Herrschaft, zwischen Reben und Alpen.",
+    "address": "Restaurant Pinot\nSteigstrasse 14\n7306 Fläsch",
+    "hours": "Täglich 09:00 – 18:00\nDo Abend ab 18:00",
+    "phone": "+41 79 123 45 67",
+    "email": "info@titz.cooking",
+    "gallery": [
+      "/img/terrasse.jpg",
+      "/img/pinot-06.jpg",
+      "/img/pinot-19.jpg"
+    ]
+  }
+}

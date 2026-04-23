@@ -59,6 +59,7 @@
 }
 
 /* base reset for page designs */
+html, body { margin: 0; padding: 0; background: var(--paper); }
 .tz-root, .tz-root * { box-sizing: border-box; }
 .tz-root {
   font-family: var(--sans);
