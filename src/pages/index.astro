@@ -4,43 +4,47 @@ import TzNav from '../components/TzNav.astro';
 import TzFooter from '../components/TzFooter.astro';
 import TzArrow from '../components/TzArrow.astro';
 import client from '../../tina/__generated__/client';
+import { tinaField } from 'tinacms/dist/react';
 
 const response = await client.queries.page({ relativePath: 'home.json' });
 const data = response.data.page;
+
+const globalResponse = await client.queries.global({ relativePath: 'index.json' });
+const globalData = globalResponse.data.global;
 ---
 
 <Layout title="titz.cooking — Redesign">
   <div class="tz-root" style="min-height: 2400px; background: var(--paper); position: relative; overflow: hidden;">
     <!-- Nav — sits on hero image -->
     <div style="position: absolute; top: 0; left: 0; right: 0; z-index: 20;">
-      <TzNav current="home" dark={true} />
+      <TzNav current="home" dark={true} navItems={globalData.header?.nav as any} cta={globalData.header?.cta as any} tinaData={globalData.header} />
     </div>
 
     <!-- ─── HERO ─────────────────────────────────── -->
-    <section style="position: relative; height: 860px; overflow: hidden; background: #1a1a18;">
-      <img src="/img/pinot-11.jpg" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.78;" />
+    <section style="position: relative; height: 860px; overflow: hidden; background: #1a1a18;" data-tina-field={tinaField(data.hero, 'image')}>
+      <img src={data.hero?.image || "/img/pinot-11.jpg"} alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.78;" />
       <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(26,26,24,0.55) 0%, rgba(26,26,24,0.15) 35%, rgba(26,26,24,0.75) 100%);"></div>
 
       <!-- Hero text -->
       <div style="position: absolute; left: 56px; right: 56px; bottom: 80px; color: #f4efe7;">
         <div style="display: grid; grid-template-columns: 1fr auto; align-items: flex-end; gap: 48px;">
           <div>
-            <div class="tz-eyebrow" style="color: rgba(244,239,231,0.7); margin-bottom: 24px;">
-              <span style="color: var(--ember);">●</span>&nbsp;&nbsp;{data.hero?.pretitle}
+            <div class="tz-eyebrow" style="color: rgba(244,239,231,0.7); margin-bottom: 24px;" data-tina-field={tinaField(data.hero, 'pretitle')}>
+              <span style="color: var(--ember);">●</span>&nbsp;&nbsp;{data.hero?.pretitle?.replace('●  ', '')}
             </div>
             <h1 class="tz-display" style="font-size: 168px; margin: 0; line-height: 0.88; font-weight: 300;">
-              {data.hero?.title1}<br/>
-              <span class="it" style="font-style: italic; font-weight: 400;">{data.hero?.titleItalic}</span><br/>
-              <span style="color: var(--ember);">{data.hero?.titleEnd}</span>
+              <span data-tina-field={tinaField(data.hero, 'title1')}>{data.hero?.title1}</span><br/>
+              <span class="it" style="font-style: italic; font-weight: 400;" data-tina-field={tinaField(data.hero, 'titleItalic')}>{data.hero?.titleItalic}</span><br/>
+              <span style="color: var(--ember);" data-tina-field={tinaField(data.hero, 'titleEnd')}>{data.hero?.titleEnd}</span>
             </h1>
           </div>
           <div style="text-align: right; padding-bottom: 20px;">
-            <p style="font-family: var(--serif); font-size: 20px; font-style: italic; line-height: 1.4; max-width: 340px; font-weight: 300; margin: 0; opacity: 0.9;">
+            <p style="font-family: var(--serif); font-size: 20px; font-style: italic; line-height: 1.4; max-width: 340px; font-weight: 300; margin: 0; opacity: 0.9;" data-tina-field={tinaField(data.hero, 'subtitle')}>
               {data.hero?.subtitle}
             </p>
             <div style="display: flex; gap: 12px; margin-top: 28px; justify-content: flex-end;">
-              <a class="tz-btn ember" href="#philo">{data.hero?.ctaPrimary} <TzArrow /></a>
-              <a class="tz-btn ghost" href="#kontakt" style="border-color: #f4efe7; color: #f4efe7;">{data.hero?.ctaSecondary}</a>
+              <a class="tz-btn ember" href="#philo" data-tina-field={tinaField(data.hero, 'ctaPrimary')}>{data.hero?.ctaPrimary} <TzArrow /></a>
+              <a class="tz-btn ghost" href="#kontakt" style="border-color: #f4efe7; color: #f4efe7;" data-tina-field={tinaField(data.hero, 'ctaSecondary')}>{data.hero?.ctaSecondary}</a>
             </div>
           </div>
         </div>
@@ -57,36 +61,16 @@ const data = response.data.page;
 
     <!-- ─── Auszeichnungen bar ─────────────────────── -->
     <section style="border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); background: var(--paper);">
-      <div style="display: grid; grid-template-columns: repeat(4, 1fr); padding: 36px 56px;">
-        <!-- Array items hardcoded -->
-        <div style="display: flex; align-items: baseline; gap: 20px; padding-left: 0; border-left: none;">
-          <div class="tz-display" style="font-size: 64px; font-weight: 300; line-height: 1;">16</div>
-          <div>
-            <div style="font-family: var(--serif); font-size: 16px; font-style: italic;">GaultMillau</div>
-            <div style="font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-3); margin-top: 4px;">Punkte 2024</div>
+      <div style="display: grid; grid-template-columns: repeat(4, 1fr); padding: 36px 56px;" data-tina-field={tinaField(data, 'awards')}>
+        {data.awards?.map((award, index) => (
+          <div style={`display: flex; align-items: baseline; gap: 20px; padding-left: ${index === 0 ? '0' : '40px'}; border-left: ${index === 0 ? 'none' : '1px solid var(--rule-soft)'};`}>
+            <div class="tz-display" style="font-size: 64px; font-weight: 300; line-height: 1;" data-tina-field={tinaField(award, 'big')}>{award.big}</div>
+            <div>
+              <div style="font-family: var(--serif); font-size: 16px; font-style: italic;" data-tina-field={tinaField(award, 'small')}>{award.small}</div>
+              <div style="font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-3); margin-top: 4px;" data-tina-field={tinaField(award, 'sub')}>{award.sub}</div>
+            </div>
           </div>
-        </div>
-        <div style="display: flex; align-items: baseline; gap: 20px; padding-left: 40px; border-left: 1px solid var(--rule-soft);">
-          <div class="tz-display" style="font-size: 64px; font-weight: 300; line-height: 1;">1★</div>
-          <div>
-            <div style="font-family: var(--serif); font-size: 16px; font-style: italic;">Michelin Stern</div>
-            <div style="font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-3); margin-top: 4px;">Verve · Rössli · Jörg Müller</div>
-          </div>
-        </div>
-        <div style="display: flex; align-items: baseline; gap: 20px; padding-left: 40px; border-left: 1px solid var(--rule-soft);">
-          <div class="tz-display" style="font-size: 64px; font-weight: 300; line-height: 1;">Bib</div>
-          <div>
-            <div style="font-family: var(--serif); font-size: 16px; font-style: italic;">Gourmand</div>
-            <div style="font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-3); margin-top: 4px;">Restaurant Pinot 2024</div>
-          </div>
-        </div>
-        <div style="display: flex; align-items: baseline; gap: 20px; padding-left: 40px; border-left: 1px solid var(--rule-soft);">
-          <div class="tz-display" style="font-size: 64px; font-weight: 300; line-height: 1;">20</div>
-          <div>
-            <div style="font-family: var(--serif); font-size: 16px; font-style: italic;">Jahre</div>
-            <div style="font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-3); margin-top: 4px;">in der Gourmetgastronomie</div>
-          </div>
-        </div>
+        ))}
       </div>
     </section>
 
@@ -276,12 +260,72 @@ const data = response.data.page;
               <div style="font-family: var(--serif); font-size: 18px;">{data.restaurant?.email}</div>
             </div>
           </div>
+          <div style="margin-top: 64px; padding-top: 48px; border-top: 1px solid var(--rule-soft);">
+            <div class="tz-eyebrow" style="margin-bottom: 24px;">Nachricht senden</div>
+            <form id="contact-form" style="display: flex; flex-direction: column; gap: 20px;">
+              
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                <input type="text" name="name" placeholder="Name" required style="width: 100%; padding: 14px 16px; background: var(--paper); border: 1px solid var(--rule); font-family: var(--serif); font-size: 16px; color: var(--ink); outline: none;" />
+                <input type="tel" name="phone" placeholder="Telefonnummer" style="width: 100%; padding: 14px 16px; background: var(--paper); border: 1px solid var(--rule); font-family: var(--serif); font-size: 16px; color: var(--ink); outline: none;" />
+              </div>
+              <input type="email" name="email" placeholder="E-Mail" required style="width: 100%; padding: 14px 16px; background: var(--paper); border: 1px solid var(--rule); font-family: var(--serif); font-size: 16px; color: var(--ink); outline: none;" />
+              <textarea name="message" placeholder="Ihre Nachricht..." rows="4" required style="width: 100%; padding: 14px 16px; background: var(--paper); border: 1px solid var(--rule); font-family: var(--serif); font-size: 16px; color: var(--ink); outline: none; resize: vertical;"></textarea>
+              
+              <!-- Cloudflare Turnstile -->
+              <div class="cf-turnstile" data-sitekey="0x4AAAAAADB_4N_hj0xfdarC"></div>
+              
+              <div id="form-status" style="font-family: var(--serif); font-style: italic; color: var(--ember); display: none;"></div>
 
-          <div style="display: flex; gap: 12px;">
-            <a class="tz-btn primary" href="mailto:info@titz.cooking">Kontakt aufnehmen <TzArrow /></a>
-            <a class="tz-btn ghost" href="#">Anfahrt ansehen</a>
+              <button type="submit" id="submit-btn" class="tz-btn ember" style="align-self: flex-start; padding: 14px 32px; cursor: pointer; border: none; font-size: 15px; margin-top: 8px;">
+                Nachricht absenden <span style="font-size: 18px; margin-left: 8px;">→</span>
+              </button>
+            </form>
           </div>
         </div>
+
+        <script>
+          const form = document.getElementById('contact-form') as HTMLFormElement;
+          const statusDiv = document.getElementById('form-status');
+          const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
+
+          form?.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            if (statusDiv && submitBtn) {
+              statusDiv.style.display = 'none';
+              submitBtn.innerText = 'Wird gesendet...';
+              submitBtn.disabled = true;
+
+              try {
+                const formData = new FormData(form);
+                const response = await fetch('/api/contact', {
+                  method: 'POST',
+                  body: formData
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                  statusDiv.innerText = 'Ihre Nachricht wurde erfolgreich gesendet!';
+                  statusDiv.style.color = 'var(--ink-2)';
+                  statusDiv.style.display = 'block';
+                  form.reset();
+                  // @ts-ignore
+                  if (window.turnstile) window.turnstile.reset();
+                } else {
+                  throw new Error(result.error || 'Ein Fehler ist aufgetreten.');
+                }
+              } catch (err: any) {
+                statusDiv.innerText = 'Fehler: ' + err.message;
+                statusDiv.style.color = 'var(--ember)';
+                statusDiv.style.display = 'block';
+              } finally {
+                submitBtn.innerHTML = 'Nachricht absenden <span style="font-size: 18px; margin-left: 8px;">→</span>';
+                submitBtn.disabled = false;
+              }
+            }
+          });
+        </script>
 
         <div style="display: grid; grid-template-rows: 1fr 1fr; gap: 16px;">
           <div style="overflow: hidden; position: relative;">
@@ -304,6 +348,6 @@ const data = response.data.page;
       </div>
     </section>
 
-    <TzFooter />
+    <TzFooter tinaData={globalData.footer} />
   </div>
 </Layout>

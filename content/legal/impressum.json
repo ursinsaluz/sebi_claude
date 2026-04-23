@@ -1,0 +1,38 @@
+{
+  "title": "Impressum",
+  "lastUpdated": "21. APRIL 2026",
+  "sections": [
+    {
+      "title": "Anbieter",
+      "content": "Sebastian Titz\nRestaurant Pinot\nSteigstrasse 14\n7306 Fläsch, Schweiz"
+    },
+    {
+      "title": "Kontakt",
+      "content": "Telefon: +41 79 123 45 67\nE-Mail: info@titz.cooking\nWeb: titz.cooking"
+    },
+    {
+      "title": "Berufsbezeichnung",
+      "content": "Eidgenössisch diplomierter Küchenchef (Schweiz).\nZuständige Kammer: Hotel & Gastro Union, Luzern."
+    },
+    {
+      "title": "Umsatzsteuer-Identifikation",
+      "content": "UID: CHE-123.456.789 MWST"
+    },
+    {
+      "title": "Verantwortlich für den Inhalt",
+      "content": "Sebastian Titz, Adresse wie oben."
+    },
+    {
+      "title": "Haftungsausschluss",
+      "content": "Die Inhalte dieser Website wurden mit grösstmöglicher Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte kann jedoch keine Gewähr übernommen werden. Als Diensteanbieter sind wir für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich."
+    },
+    {
+      "title": "Urheberrecht",
+      "content": "Die durch die Seitenbetreiber erstellten Inhalte und Werke auf dieser Website unterliegen dem schweizerischen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung ausserhalb der Grenzen des Urheberrechts bedürfen der schriftlichen Zustimmung des jeweiligen Autors."
+    },
+    {
+      "title": "Bildnachweise",
+      "content": "Food-, Porträt- und Restaurantfotografie: Cyril Kohler, sowie Eigenaufnahmen Restaurant Pinot 2025. Archivbilder Stationen: jeweilige Häuser."
+    }
+  ]
+}

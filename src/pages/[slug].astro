@@ -1,0 +1,79 @@
+---
+import Layout from '../layouts/Layout.astro';
+import TzNav from '../components/TzNav.astro';
+import TzFooter from '../components/TzFooter.astro';
+import client from '../../tina/__generated__/client';
+import { tinaField } from 'tinacms/dist/react';
+
+export async function getStaticPaths() {
+  const response = await client.queries.legalConnection();
+  return response.data.legalConnection.edges?.map((edge: any) => {
+    return {
+      params: { slug: edge.node._sys.filename },
+    };
+  }) || [];
+}
+
+const { slug } = Astro.params;
+const response = await client.queries.legal({ relativePath: `${slug}.json` });
+const data = response.data.legal;
+
+const globalResponse = await client.queries.global({ relativePath: 'index.json' });
+const globalData = globalResponse.data.global;
+
+const isImp = slug === 'impressum';
+---
+<Layout title={`titz.cooking — ${data.title}`}>
+  <div class="tz-root" style="min-height: 1600px; background: var(--paper); position: relative; overflow: hidden;">
+    <TzNav current={slug} dark={false} navItems={globalData.header?.nav as any} cta={globalData.header?.cta as any} tinaData={globalData.header} />
+    
+    <section style="padding: 80px 56px 48px; border-bottom: 1px solid var(--rule);">
+      <div class="tz-eyebrow" style="margin-bottom: 20px;">Rechtliches — § {data.title}</div>
+      <h1 class="tz-display" style="font-size: 140px; margin: 0; font-weight: 300; line-height: 0.9;" data-tina-field={tinaField(data, "title")}>
+        {isImp ? (
+          <>Impressum<span style="color: var(--ember);">.</span></>
+        ) : (
+          <>Daten<span style="font-style: italic;">schutz</span><span style="color: var(--ember);">.</span></>
+        )}
+      </h1>
+    </section>
+
+    <section style="padding: 80px 56px 120px; display: grid; grid-template-columns: 300px 1fr; gap: 80px;">
+      {/* Sidebar TOC */}
+      <aside style="position: sticky; top: 40px; align-self: start;">
+        <div class="tz-eyebrow" style="margin-bottom: 20px;">Inhaltsverzeichnis</div>
+        <nav style="display: flex; flex-direction: column; gap: 12px; font-family: var(--serif); font-size: 16px;">
+          {data.sections?.map((sec: any, i: number) => (
+            <a href={`#s${i}`} style="color: var(--ink-3); text-decoration: none; font-style: italic; display: flex; gap: 14px;">
+              <span style="font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; font-style: normal; color: var(--ember-deep); width: 24px;">§ {String(i + 1).padStart(2, '0')}</span>
+              <span data-tina-field={tinaField(sec, "title")}>{sec.title}</span>
+            </a>
+          ))}
+        </nav>
+        <hr class="tz-rule" style="margin: 32px 0;" />
+        <div style="font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-4); line-height: 1.8;">
+          Zuletzt aktualisiert<br/><span data-tina-field={tinaField(data, "lastUpdated")}>{data.lastUpdated}</span>
+        </div>
+      </aside>
+
+      {/* Main Content */}
+      <article style="max-width: 720px;">
+        {data.sections?.map((sec: any, i: number) => (
+          <section id={`s${i}`} style={`padding: 40px 0; border-top: ${i === 0 ? 'none' : '1px solid var(--rule-soft)'};`}>
+            <div style="display: grid; grid-template-columns: 80px 1fr; gap: 24px;">
+              <div style="font-family: var(--mono); font-size: 11px; letter-spacing: 0.15em; color: var(--ember-deep); padding-top: 8px;">§ {String(i + 1).padStart(2, '0')}</div>
+              <div>
+                <h3 class="tz-display" style="font-size: 32px; margin: 0 0 16px; font-weight: 400;" data-tina-field={tinaField(sec, "title")}>{sec.title}</h3>
+                <div style="font-family: var(--serif); font-size: 17px; line-height: 1.7; color: var(--ink-2); white-space: pre-line;" data-tina-field={tinaField(sec, "content")}>
+                  {sec.content}
+                </div>
+              </div>
+            </div>
+          </section>
+        ))}
+      </article>
+    </section>
+
+    <TzFooter tinaData={globalData.footer} />
+  </div>
+</Layout>

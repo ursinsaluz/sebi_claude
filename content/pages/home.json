@@ -1,5 +1,6 @@
 {
   "hero": {
+    "image": "/img/pinot-11.jpg",
     "pretitle": "●  Küchenchef · Restaurant Pinot · Fläsch",
     "title1": "Authentisch.",
     "titleItalic": "Regional.",
@@ -8,6 +9,28 @@
     "ctaPrimary": "Meine Philosophie",
     "ctaSecondary": "Kontakt aufnehmen"
   },
+  "awards": [
+    {
+      "big": "16",
+      "small": "GaultMillau",
+      "sub": "Punkte 2024"
+    },
+    {
+      "big": "1★",
+      "small": "Michelin Stern",
+      "sub": "Verve · Rössli · Jörg Müller"
+    },
+    {
+      "big": "Bib",
+      "small": "Gourmand",
+      "sub": "Restaurant Pinot 2024"
+    },
+    {
+      "big": "20",
+      "small": "Jahre",
+      "sub": "in der Gourmetgastronomie"
+    }
+  ],
   "philosophy": [
     {
       "title": "Authentisch",
@@ -28,6 +51,17 @@
       "image": "/img/dish-2.jpg"
     }
   ],
+  "chef": {
+    "image": "/img/pinot-15.jpg",
+    "eyebrow": "§ 02 — Der Koch",
+    "title1": "Sebastian",
+    "titleItalic": "Titz",
+    "titleEnd": "",
+    "text1": "Zwanzig Jahre Gourmetküche. Ein Michelin-Stern. 16 GaultMillau-Punkte. Und immer noch das Lagerfeuer aus dem Pfadilager im Kopf.",
+    "text2": "Aufgewachsen in Graubünden, geformt in den grössten Küchen der Schweiz, zurückgekehrt in die Bündner Herrschaft. Im Restaurant Pinot kocht Sebastian Titz eine Küche, die das Terroir kennt — und den Gast respektiert.",
+    "ctaPrimary": "Stationen ansehen",
+    "ctaSecondary": "Philosophie lesen"
+  },
   "signatureDishes": [
     {
       "title": "Milcheis mit Spekulatius",
@@ -72,6 +106,27 @@
       "date": "21.10.2025",
       "tag": "Interview",
       "description": "Drei Chefs über Küche, Handwerk und den Mut zum Weglassen."
+    },
+    {
+      "title": "Mit Leidenschaft kochen",
+      "publisher": "Porträt",
+      "date": "20.08.2025",
+      "tag": "Porträt",
+      "description": "Ein Rückblick auf 20 Jahre Erfahrung in der Gourmetgastronomie und die Liebe zum Handwerk."
+    },
+    {
+      "title": "Bib Gourmand für das Restaurant Pinot",
+      "publisher": "Guide Michelin",
+      "date": "15.10.2024",
+      "tag": "Auszeichnung",
+      "description": "„Simply brilliant.“ — ausgezeichnet für exzellentes Preis-Leistungs-Verhältnis."
+    },
+    {
+      "title": "16 Punkte im Guide 2024",
+      "publisher": "GaultMillau",
+      "date": "01.10.2024",
+      "tag": "Auszeichnung",
+      "description": "Wir freuen uns über 16 Punkte im neuen Guide GaultMillau und die Bestätigung unserer Arbeit."
     }
   ],
   "offers": [
@@ -112,5 +167,10 @@
       "/img/pinot-06.jpg",
       "/img/pinot-19.jpg"
     ]
-  }
+  },
+  "marquee": [
+    "Authentisch",
+    "Regional",
+    "Exzellent"
+  ]
 }

@@ -1,0 +1,65 @@
+{
+  "header": {
+    "nav": [
+      {
+        "id": "home",
+        "label": "Start",
+        "href": "#home"
+      },
+      {
+        "id": "stationen",
+        "label": "Stationen",
+        "href": "#stationen"
+      },
+      {
+        "id": "philosophie",
+        "label": "Philosophie",
+        "href": "#philo"
+      },
+      {
+        "id": "pinot",
+        "label": "Restaurant",
+        "href": "#pinot"
+      },
+      {
+        "id": "kontakt",
+        "label": "Kontakt",
+        "href": "#kontakt"
+      }
+    ],
+    "cta": {
+      "label": "Kontakt aufnehmen",
+      "href": "#kontakt"
+    }
+  },
+  "footer": {
+    "quote": "Authentisch.\nRegional.\nExzellent.",
+    "visit": "Restaurant Pinot\nSteigstrasse 14\n7306 Fläsch, GR",
+    "contact": "info@titz.cooking\n+41 79 123 45 67\n@titzsebastian",
+    "nav": [
+      {
+        "label": "Stationen",
+        "href": "/#stationen"
+      },
+      {
+        "label": "Philosophie",
+        "href": "/#philo"
+      },
+      {
+        "label": "Restaurant Pinot",
+        "href": "/#pinot"
+      },
+      {
+        "label": "Impressum",
+        "href": "/impressum"
+      },
+      {
+        "label": "Datenschutz",
+        "href": "/datenschutz"
+      }
+    ],
+    "bottomText": "© 2026 Sebastian Titz",
+    "bottomTextMiddle": "Fläsch · Bündner Herrschaft · CH",
+    "bottomTextRight": "v.2026.04"
+  }
+}

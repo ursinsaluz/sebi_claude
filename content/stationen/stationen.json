@@ -1,0 +1,225 @@
+{
+  "hero": {
+    "eyebrow": "Werdegang — Sebastian Titz",
+    "title": "Stationen.",
+    "text": "Über zwanzig Jahre, ein Dutzend Küchen, ein roter Faden: Respekt vor dem Produkt, vor dem Ursprung, vor dem Handwerk.",
+    "stats": [
+      {
+        "value": "2002",
+        "label": "Eintritt in die Küche"
+      },
+      {
+        "value": "12",
+        "label": "Stationen insgesamt"
+      },
+      {
+        "value": "17",
+        "label": "GaultMillau-Punkte (max.)"
+      },
+      {
+        "value": "2",
+        "label": "Michelin-Sterne-Häuser"
+      }
+    ]
+  },
+  "stations": [
+    {
+      "year": "seit 2025",
+      "title": "Klinik Gut & Restaurant Pinot",
+      "place": "Fläsch, Graubünden",
+      "role": "Küchenchef",
+      "current": true,
+      "awards": [
+        "aktuell"
+      ],
+      "body": "Rückkehr zur Intimität. Schnörkellose Gerichte mit Wow-Effekt in der Bündner Herrschaft. Zwischen Reben, Rheintal und Alpstein.",
+      "image": "/img/pinot-11.jpg"
+    },
+    {
+      "year": "2019 – 2025",
+      "title": "Restaurant Verve by Sven",
+      "place": "Grand Resort Bad Ragaz",
+      "role": "Küchenchef · Executive Sous Chef",
+      "current": false,
+      "awards": [
+        "1★ Michelin",
+        "15 GaultMillau",
+        "Manager of the Quarter 2022"
+      ],
+      "body": "Verantwortung für 15 GaultMillau-Punkte und einen Michelin-Stern. Konzeption und Umsetzung des Lifestyle- und Health-Konzepts. Führung von 16 Mitarbeitenden, Ausbildung von Lernenden.",
+      "image": "/img/pinot-15.jpg"
+    },
+    {
+      "year": "2015 – 2018",
+      "title": "Hotel Villa Honegg",
+      "place": "Ennetbürgen",
+      "role": "Küchenchef",
+      "current": false,
+      "awards": [
+        "14 GaultMillau"
+      ],
+      "body": "Verantwortung für 14 GaultMillau-Punkte. Führung von 12 Mitarbeitenden und Ausbildung von zwei Lernenden. Bühne mit Panorama auf den Vierwaldstättersee.",
+      "image": "/img/pinot-10.jpg"
+    },
+    {
+      "year": "2008 – 2015",
+      "title": "Gasthof Rössli",
+      "place": "Escholzmatt, Entlebuch",
+      "role": "Küchenchef bei Stefan Wiesner",
+      "current": false,
+      "awards": [
+        "1★ Michelin",
+        "17 GaultMillau",
+        "Lehrmeister-Nomination 2013"
+      ],
+      "body": "Sieben Jahre mit dem „Hexer aus dem Entlebuch“. Heusuppe, Moor, Natur pur. Führung von 6 Mitarbeitenden und drei Lernenden. Nomination „Zukunftsträger — Lehrmeister des Jahres“ 2013.",
+      "image": "/img/wiesner-1.jpg"
+    },
+    {
+      "year": "2007 – 2008",
+      "title": "Hotel Restaurant Jörg Müller",
+      "place": "Westerland, Sylt",
+      "role": "Chef de Partie · Garde Manger",
+      "current": false,
+      "awards": [
+        "1★ Michelin",
+        "18 GaultMillau"
+      ],
+      "body": "Prägende Inselzeit. Nordische Klarheit, französisches Handwerk, Meer — auf höchstem Niveau.",
+      "image": "/img/dish-3.jpg"
+    },
+    {
+      "year": "2006 – 2007",
+      "title": "Tschuggen Grand Hotel",
+      "place": "Arosa",
+      "role": "Chef de Partie Entremetier · Pasta",
+      "current": false,
+      "awards": [
+        "14 GaultMillau"
+      ],
+      "body": "Grand Restaurant & La Vetta. Alpine Grande-Hotellerie, Disziplin, Tempo.",
+      "image": "/img/dish-2.jpg"
+    },
+    {
+      "year": "2006",
+      "title": "Le Club by Armin Amrein",
+      "place": "Bürgenstock Resorts",
+      "role": "Demi-Chef Saucier",
+      "current": false,
+      "awards": [
+        "17 GaultMillau"
+      ],
+      "body": "Saucenwerkstatt in einer der präzisesten Küchen der Schweiz.",
+      "image": "/img/dish-1.jpg"
+    },
+    {
+      "year": "2005 – 2006",
+      "title": "Tschuggen Grand Hotel",
+      "place": "Arosa",
+      "role": "Commis Tournant · Garde Manger / La Vetta",
+      "current": false,
+      "awards": [],
+      "body": "Rückkehr auf vertrautes Parkett — diesmal als Commis auf Wanderschaft durch alle Posten.",
+      "image": "/img/roessli-1.jpg"
+    },
+    {
+      "year": "2002 – 2005",
+      "title": "Frühe Stationen",
+      "place": "Zermatt · Davos · Küssnacht",
+      "role": "Chef de Partie",
+      "current": false,
+      "awards": [],
+      "body": "Seiler Hotels Schweizerhof (Zermatt), Sheraton Derby (Davos), Hirschen (Küssnacht). Die Jahre, in denen man lernt, dass Disziplin das Fundament jeder Kreativität ist.",
+      "image": "/img/roessli-3.jpg"
+    }
+  ],
+  "education": [
+    {
+      "year": "2014 – 2016",
+      "title": "HFP — Eidg. Dipl. Küchenchef",
+      "place": "Hotel & Gastro Formation Weggis",
+      "note": "Höchster Bildungsabschluss im Schweizer Gastgewerbe."
+    },
+    {
+      "year": "2011 – 2012",
+      "title": "Chefkoch mit Eidg. Fachausweis",
+      "place": "Weggis",
+      "note": "Weiterbildung zum Chefkoch."
+    },
+    {
+      "year": "2003 – 2004",
+      "title": "Militärischer Küchenchef · Unteroffizier",
+      "place": "Schweizer Armee",
+      "note": "Dienstpflicht erfüllt."
+    },
+    {
+      "year": "1999 – 2002",
+      "title": "Koch EFZ",
+      "place": "Restaurant Schneggen, Buchs SG",
+      "note": "Grundbildung — 14 GaultMillau."
+    }
+  ],
+  "qualifications": [
+    {
+      "kind": "Publikation",
+      "year": "2011",
+      "title": "„Avantgardistische Naturküche“",
+      "note": "Mitautor von Stefan Wiesner. Rezeptentwicklung und Dokumentation."
+    },
+    {
+      "kind": "Weiterbildung",
+      "year": "—",
+      "title": "Gewaltfreie Kommunikation",
+      "note": "Kommunikationstraining für Kaderkräfte."
+    },
+    {
+      "kind": "Qualifikation",
+      "year": "—",
+      "title": "IT & Sprachen",
+      "note": "Branchensoftware (Mirus, Eurotime, Kochtopf) · DE, EN, FR."
+    }
+  ],
+  "hobbies": [
+    {
+      "title": "Trailrunning",
+      "note": "Auf den Bündner Bergen. Der ideale Ausgleich zum Küchenalltag — und Quelle neuer Inspiration.",
+      "image": "/img/dish-1.jpg"
+    },
+    {
+      "title": "Skitouren",
+      "note": "Die Berge abseits der Pisten erkunden.",
+      "image": "/img/IMG_20160310_104727.jpg"
+    },
+    {
+      "title": "Mountainbiken",
+      "note": "In der freien Natur, am liebsten auf alpinem Terrain.",
+      "image": "/img/terroir-1.jpg"
+    },
+    {
+      "title": "Sauerteig & Backen",
+      "note": "Langsame Fermentation, perfekte Kruste, einzigartiger Geschmack — handwerkliche Prozesse als pure Magie.",
+      "image": "/img/IMG-20200426-WA0014.jpg",
+      "placeholder": "Platzhalter — Sauerteigbrot"
+    },
+    {
+      "title": "Garten",
+      "note": "Pflege und Anbau im eigenen Garten. Bezug zur Natur bewahren — und zur Saison.",
+      "placeholder": "Platzhalter — Garten"
+    },
+    {
+      "title": "Yoga",
+      "note": "Zum Ausgleich, zur Konzentration.",
+      "image": "/img/IMG-20230720-WA0001.jpg",
+      "placeholder": "Platzhalter — Yoga"
+    },
+    {
+      "title": "Pfadfinder & Lagerkoch",
+      "note": "Früh entdeckt: das Arbeiten im Team und die Liebe zum Kochen über offenem Feuer. Diese Wurzeln prägen den Führungsstil bis heute.",
+      "image": "/img/4425_1164413673158_1312358553_454209_7557885_n[1].jpg"
+    }
+  ],
+  "quote": {
+    "text": "„Jede Station war eine Küche — und jede Küche war eine Lektion in Demut.“",
+    "author": "Sebastian Titz"
+  }
+}

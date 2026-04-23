@@ -1,23 +1,20 @@
 ---
 import TzLogo from './TzLogo.astro';
 import TzArrow from './TzArrow.astro';
+import { tinaField } from 'tinacms/dist/react';
 
 export interface Props {
   current?: string;
   dark?: boolean;
   compact?: boolean;
+  navItems?: { id: string; label: string; href: string }[];
+  cta?: { label: string; href: string };
+  tinaData?: any;
 }
 
-const { current = 'home', dark = false, compact = false } = Astro.props;
+const { current = 'home', dark = false, compact = false, navItems = [], cta, tinaData } = Astro.props;
 
 const ink = dark ? '#f4efe7' : 'var(--ink)';
-const items = [
-  { id: 'home', label: 'Start', href: '#home' },
-  { id: 'stationen', label: 'Stationen', href: '#stationen' },
-  { id: 'philosophie', label: 'Philosophie', href: '#philo' },
-  { id: 'pinot', label: 'Restaurant', href: '#pinot' },
-  { id: 'kontakt', label: 'Kontakt', href: '#kontakt' },
-];
 ---
 <nav style={`
   display: flex; align-items: center; justify-content: space-between;
@@ -25,23 +22,25 @@ const items = [
   border-bottom: ${dark ? '1px solid rgba(244,239,231,0.15)' : '1px solid var(--rule-soft)'}
 `}>
   <TzLogo size={compact ? 17 : 19} color={ink} />
-  <div style="display: flex; gap: 34px; font-family: var(--sans); font-size: 13px; letter-spacing: 0.01em;">
-    {items.map(it => (
+  <div style="display: flex; gap: 34px; font-family: var(--sans); font-size: 13px; letter-spacing: 0.01em;" data-tina-field={tinaData ? tinaField(tinaData, 'nav') : ''}>
+    {navItems.map((it, i) => (
       <a href={it.href} style={`
         color: ${ink}; text-decoration: none;
         opacity: ${current === it.id ? 1 : 0.7};
         border-bottom: ${current === it.id ? `1px solid ${dark ? 'var(--ember)' : 'var(--ink)'}` : '1px solid transparent'};
         padding-bottom: 3px;
-      `}>{it.label}</a>
+      `} data-tina-field={tinaData ? tinaField(tinaData.nav[i], 'label') : ''}>{it.label}</a>
     ))}
   </div>
   <div style="display: flex; align-items: center; gap: 16px;">
-    <a href="#kontakt" class="tz-btn primary" style={`
-      padding: 10px 18px; font-size: 12px;
-      background: ${dark ? 'var(--ember)' : 'var(--ink)'};
-      color: ${dark ? '#f4efe7' : 'var(--paper)'}
-    `}>
-      Kontakt aufnehmen <TzArrow size={12} />
-    </a>
+    {cta && (
+      <a href={cta.href} class="tz-btn primary" style={`
+        padding: 10px 18px; font-size: 12px;
+        background: ${dark ? 'var(--ember)' : 'var(--ink)'};
+        color: ${dark ? '#f4efe7' : 'var(--paper)'}
+      `} data-tina-field={tinaData ? tinaField(tinaData.cta, 'label') : ''}>
+        {cta.label} <TzArrow size={12} />
+      </a>
+    )}
   </div>
 </nav>

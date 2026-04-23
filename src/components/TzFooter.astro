@@ -1,40 +1,45 @@
 ---
 import TzLogo from './TzLogo.astro';
+import { tinaField } from 'tinacms/dist/react';
+
+export interface Props {
+  tinaData?: any;
+}
+
+const { tinaData } = Astro.props;
 ---
-<footer style="background: var(--ink); color: var(--paper); padding: 80px 56px 32px;">
+<footer style="background: var(--ink); color: var(--paper); padding: 80px 56px 32px;" data-tina-field={tinaData ? tinaField(tinaData, 'quote') : ''}>
   <div style="display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 56px;">
     <div>
       <TzLogo size={22} color="var(--paper)" />
-      <p style="font-family: var(--serif); font-style: italic; font-size: 22px; line-height: 1.3; margin-top: 28px; max-width: 320px; opacity: 0.9;">
-        Authentisch.<br/>Regional.<br/>Exzellent.
+      <p style="font-family: var(--serif); font-style: italic; font-size: 22px; line-height: 1.3; margin-top: 28px; max-width: 320px; opacity: 0.9; white-space: pre-line;" data-tina-field={tinaData ? tinaField(tinaData, 'quote') : ''}>
+        {tinaData?.quote}
       </p>
     </div>
     <div>
       <div class="tz-eyebrow" style="color: #8c8578; margin-bottom: 14px;">Besuchen</div>
-      <div style="font-size: 14px; line-height: 1.7; opacity: 0.85;">
-        Restaurant Pinot<br/>Steigstrasse 14<br/>7306 Fläsch, GR
+      <div style="font-size: 14px; line-height: 1.7; opacity: 0.85; white-space: pre-line;" data-tina-field={tinaData ? tinaField(tinaData, 'visit') : ''}>
+        {tinaData?.visit}
       </div>
     </div>
     <div>
       <div class="tz-eyebrow" style="color: #8c8578; margin-bottom: 14px;">Kontakt</div>
-      <div style="font-size: 14px; line-height: 1.7; opacity: 0.85;">
-        info@titz.cooking<br/>+41 79 123 45 67<br/>@titzsebastian
+      <div style="font-size: 14px; line-height: 1.7; opacity: 0.85; white-space: pre-line;" data-tina-field={tinaData ? tinaField(tinaData, 'contact') : ''}>
+        {tinaData?.contact}
       </div>
     </div>
     <div>
       <div class="tz-eyebrow" style="color: #8c8578; margin-bottom: 14px;">Navigation</div>
       <div style="display: flex; flex-direction: column; gap: 8px; font-size: 14px; opacity: 0.85;">
-        <a href="#stationen" style="color: inherit; text-decoration: none;">Stationen</a>
-        <a href="#philo" style="color: inherit; text-decoration: none;">Philosophie</a>
-        <a href="#pinot" style="color: inherit; text-decoration: none;">Restaurant Pinot</a>
-        <a href="#impressum" style="color: inherit; text-decoration: none;">Impressum</a>
-        <a href="#datenschutz" style="color: inherit; text-decoration: none;">Datenschutz</a>
+        {tinaData?.nav?.map((item: any, i: number) => (
+          <a href={item.href} style="color: inherit; text-decoration: none;" data-tina-field={tinaData ? tinaField(tinaData.nav[i], 'label') : ''}>{item.label}</a>
+        ))}
       </div>
     </div>
   </div>
   <div style="border-top: 1px solid rgba(244,239,231,0.15); padding-top: 24px; display: flex; justify-content: space-between; font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.5;">
-    <span>© 2026 Sebastian Titz</span>
-    <span>Fläsch · Bündner Herrschaft · CH</span>
-    <span>v.2026.04</span>
+    <span data-tina-field={tinaData ? tinaField(tinaData, 'bottomText') : ''}>{tinaData?.bottomText}</span>
+    <span data-tina-field={tinaData ? tinaField(tinaData, 'bottomTextMiddle') : ''}>{tinaData?.bottomTextMiddle}</span>
+    <span data-tina-field={tinaData ? tinaField(tinaData, 'bottomTextRight') : ''}>{tinaData?.bottomTextRight}</span>
   </div>
 </footer>

@@ -1,0 +1,42 @@
+{
+  "title": "Datenschutz",
+  "lastUpdated": "21. APRIL 2026",
+  "sections": [
+    {
+      "title": "Verantwortliche Stelle",
+      "content": "Verantwortlich für die Datenverarbeitung auf dieser Website ist Sebastian Titz, Steigstrasse 14, 7306 Fläsch. Sie können uns per E-Mail unter info@titz.cooking erreichen."
+    },
+    {
+      "title": "Erhobene Daten",
+      "content": "Beim Besuch unserer Website werden automatisch Informationen allgemeiner Natur erfasst. Diese Informationen (Server-Logfiles) beinhalten Art des Webbrowsers, verwendetes Betriebssystem, Domainname Ihres Internet-Service-Providers und ähnliches."
+    },
+    {
+      "title": "Kontaktformular",
+      "content": "Wenn Sie uns über das Kontaktformular Anfragen zukommen lassen, werden Ihre Angaben aus dem Anfrageformular inklusive der von Ihnen dort angegebenen Kontaktdaten zwecks Bearbeitung der Anfrage gespeichert."
+    },
+    {
+      "title": "Cookies",
+      "content": "Wir verwenden ausschliesslich technisch notwendige Cookies, um die Funktionalität unserer Website sicherzustellen. Diese werden nach Ende Ihrer Sitzung automatisch gelöscht."
+    },
+    {
+      "title": "Server-Logfiles",
+      "content": "Der Provider der Seiten erhebt und speichert automatisch Informationen in so genannten Server-Log-Dateien. Eine Zusammenführung dieser Daten mit anderen Datenquellen wird nicht vorgenommen."
+    },
+    {
+      "title": "Analyse-Tools",
+      "content": "Diese Website nutzt Plausible Analytics — ein datenschutzfreundliches, Cookie-freies Tool. Es werden keine personenbezogenen Daten erhoben, keine IP-Adressen gespeichert und kein Tracking über Sitzungen hinaus durchgeführt."
+    },
+    {
+      "title": "Externe Dienste",
+      "content": "Wir binden Instagram- und OpenStreetMap-Inhalte nur nach aktiver Bestätigung durch den Nutzer ein. Bis zur Bestätigung werden keine Daten an diese Dienste übertragen."
+    },
+    {
+      "title": "Ihre Rechte",
+      "content": "Sie haben jederzeit das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung oder Widerspruch gegen die Verarbeitung Ihrer Daten. Wenden Sie sich hierzu formlos an info@titz.cooking."
+    },
+    {
+      "title": "SSL-Verschlüsselung",
+      "content": "Diese Seite nutzt aus Gründen der Sicherheit und zum Schutz der Übertragung vertraulicher Inhalte eine SSL-Verschlüsselung. Eine verschlüsselte Verbindung erkennen Sie am Schloss-Symbol Ihres Browsers."
+    }
+  ]
+}
