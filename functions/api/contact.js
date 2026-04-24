@@ -11,7 +11,13 @@ export async function onRequestPost({ request, env }) {
     const ip = request.headers.get("CF-Connecting-IP");
 
     // 1. Verify Turnstile Captcha
-    const secretKey = env.TURNSTILE_SECRET_KEY || "0x4AAAAAADB_4BrRvxvYJ5UuHxfXWtBkeIk";
+    const secretKey = env.TURNSTILE_SECRET_KEY;
+    if (!secretKey) {
+      return new Response(JSON.stringify({ success: false, error: "Server-Konfigurationsfehler." }), {
+        status: 500,
+        headers: { "Content-Type": "application/json" }
+      });
+    }
     
     const turnstileFormData = new URLSearchParams();
     turnstileFormData.append("secret", secretKey);
