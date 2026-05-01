@@ -7,11 +7,6 @@
         "href": "#home"
       },
       {
-        "id": "stationen",
-        "label": "Stationen",
-        "href": "#stationen"
-      },
-      {
         "id": "philosophie",
         "label": "Philosophie",
         "href": "#philo"
@@ -25,6 +20,11 @@
         "id": "kontakt",
         "label": "Kontakt",
         "href": "#kontakt"
+      },
+      {
+        "id": "stationen",
+        "label": "Stationen",
+        "href": "#stationen"
       }
     ],
     "cta": {
